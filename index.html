@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Sai</title>
+
+    <link rel="icon" type="png|image" href="/IMAGES/sailogo.png">
+    <link rel="stylesheet" href="CssOmarStyle.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+</head>
+<body>
+
+    <canvas id="matrixCanvas"></canvas>                                       
+    <script src="matrix.js"></script>
+
+    <header class="header">
+        <a href="#" class="logo"> Cryotodog </a>
+
+        <nav class="navbar">
+            <a href="#" style="--i:1;" class="active">Omar samarah</a>
+            <a href="#" style="--i:2;">flan 1</a>
+            <a href="#" style="--i:3;">flan 2</a>
+            <a href="#" style="--i:4;">flan 3</a>
+            
+        </nav>
+    </header>
+
+    <section id="home" class="home">
+
+
+        <div  class="box">
+
+            <h2 style="color: #00ff00; font-family: 'Courier New', monospace;">Encrypt</h2>
+            <textarea id="inputText" placeholder="Enter your secret message"></textarea>
+            <br>
+            <button onclick="encrypt()">Encrypt</button>
+            <textarea id="encryptedText" readonly></textarea>
+    
+        </div>
+        <div class="box">
+            <h2 style="color: #00ff00; font-family: 'Courier New', monospace;">Decrypt </h2>
+            <textarea id="decryptedText" placeholder="Enter encrypted message"></textarea>
+            <br>
+            <button onclick="decrypt()">Decrypt</button>
+            <textarea id="decryptedOutput" readonly></textarea>
+        </div>
+    
+         <script>
+            function encrypt() {
+                const inputText = document.getElementById('inputText').value;
+                const xorKey = 13; // Simple XOR key
+                let xorResult = '';
+                for (let i = 0; i < inputText.length; i++) {
+                    xorResult += String.fromCharCode(xorKey ^ inputText.charCodeAt(i));
+                }
+                const encryptedText = btoa(xorResult);
+                document.getElementById('encryptedText').value = encryptedText;
+            }
+    
+            function decrypt() {
+                const encryptedText = document.getElementById('decryptedText').value;
+                const decoded = atob(encryptedText);
+                const xorKey = 13; // Simple XOR key
+                let decryptedText = '';
+                for (let i = 0; i < decoded.length; i++) {
+                    decryptedText += String.fromCharCode(xorKey ^ decoded.charCodeAt(i));
+                }
+                document.getElementById('decryptedOutput').value = decryptedText;
+            }
+        </script>
+
+
+<div class="home-content" data-scroll data-scroll-speed="-5" >
+</div>
+
+       
+       
+
+        <div class="home-img">
+            <div class="glowing-circle">
+                <span></span>
+                <span></span>
+                <div class="image">
+                    <img src="saianon.png" alt="">
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</body> 
+</html> 
